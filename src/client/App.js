@@ -51,13 +51,40 @@ class App extends Component {
     render() {
         return (
             <div className={styles.app}>
-                <div className={styles.app_header}>
-                    <img src={logo} className={styles.app_logo} alt="logo" />
-                    <h2>Welcome to React</h2>
-                </div>
-                <p className={styles.app_intro}>
-                    To get started, edit <code>src/App.js</code> and save to reload
-                </p>
+                <section className={styles.container}>
+                    <div className={styles.app_header}>
+                        <img src={logo} className={styles.app_logo} alt="logo" />
+                        <h2>Welcome to React</h2>
+                    </div>
+                    <p className={styles.app_intro}>
+                        <a
+                            rel={node => node}
+                            href="https://github.com/TonyHey"
+                            target="_blank"
+                        >github</a>
+                    </p>
+                    <p className={styles.app_intro}>
+                        <a
+                            rel={node => node}
+                            href="https://github.com/TonyHey"
+                            target="_blank"
+                        >github</a>
+                    </p>
+                    <p className={styles.app_intro}>
+                        <a
+                            rel={node => node}
+                            href="https://github.com/TonyHey"
+                            target="_blank"
+                        >github</a>
+                    </p>
+                    <p className={styles.app_intro}>
+                        <a
+                            rel={node => node}
+                            href="https://github.com/TonyHey"
+                            target="_blank"
+                        >github</a>
+                    </p>
+                </section>
                 <canvas id="canvas_box" className={styles.canvas}>your browser not suport canvas</canvas>
             </div>
         )

@@ -1,6 +1,10 @@
 .app {
     text-align: center;
-
+    .container {
+        position: absolute;
+        top: 15%;
+        width:100%;
+    }
     .app_logo {
         animation: App_logo_spin infinite 20s linear;
         height: 80px;
@@ -14,13 +18,26 @@
 
     .app_intro {
         font-size: large;
+        margin-top: 0;
         user-select: none;
     }
 
     h2 {
         user-select: none;
     }
-
+    a {
+        text-decoration: none;
+        color: rgb(12, 13, 12);
+        &:visited {
+            color: rgb(12, 13, 12);
+        }
+        &:hover {
+            color: rgb(12, 13, 12);
+        }
+        &:active {
+            color: rgb(12, 13, 12);
+        }
+    }
     .canvas {
         position: absolute;
         top: 0;
