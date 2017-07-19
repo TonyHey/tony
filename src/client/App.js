@@ -53,7 +53,8 @@ class App extends Component {
                 <section className={styles.container}>
                     <div className={styles.app_header}>
                         <img src={logo} className={styles.app_logo} alt="logo" />
-                        <h2>Welcome to React</h2>
+                        <h1>Tony Here</h1>
+                        <h2>Keep moving and carry on</h2>
                     </div>
                     <p className={styles.app_intro}>
                         <a

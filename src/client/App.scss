@@ -4,26 +4,36 @@
         position: absolute;
         top: 15%;
         width:100%;
+        user-select: none;
     }
     .app_logo {
         animation: App_logo_spin infinite 20s linear;
         height: 80px;
-        user-select: none;
     }
 
     .app_header {
-        height: 150px;
         padding: 20px;
     }
 
     .app_intro {
         font-size: large;
         margin-top: 0;
-        user-select: none;
     }
 
+    h1 {
+        font-family: 'Montserrat', 'Helvetica Neue', Arial, sans-serif;
+        font-weight: 900;
+        font-size: 30px;
+        letter-spacing: 9px;
+        text-transform: uppercase;
+        margin-top: 10px;
+        margin-bottom: 10px;
+    }
     h2 {
-        user-select: none;
+        color: #999;
+        font-weight: normal;
+        font-size: 15px;
+        letter-spacing: 2px;
     }
     a {
         text-decoration: none;
