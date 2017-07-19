@@ -23,15 +23,14 @@ class App extends Component {
         x.globalAlpha = 0.6
         function i(){
             x.clearRect(0,0,w,h)
-            q=[{x:0,y:h*.7+f},{x:0,y:h*.7-f}]
+            q=[{x:0,y:h*.5+f},{x:0,y:h*.5-f}]
             while(q[1].x<w+f) d(q[0], q[1])
         }
         function d(i,j){
             x.beginPath()
             x.moveTo(i.x, i.y)
             x.lineTo(j.x, j.y)
-            var k = j.x + (z()*2-0.25)*f,
-                n = y(j.y)
+            const k = j.x + (z()*2-0.25)*f, n = y(j.y)
             x.lineTo(k, n)
             x.closePath()
             r-=u/-50
@@ -41,7 +40,7 @@ class App extends Component {
             q[1] = {x:k,y:n}
         }
         function y(p){
-            var t = p + (z()*2-1.1)*f
+            const t = p + (z()*2-1.1)*f
             return (t>h||t<0) ? y(p) : t
         }
         document.addEventListener("click", () => i())
@@ -66,23 +65,23 @@ class App extends Component {
                     <p className={styles.app_intro}>
                         <a
                             rel={node => node}
-                            href="https://github.com/TonyHey"
+                            href="http://project.freedomlove.me"
                             target="_blank"
-                        >github</a>
+                        >project</a>
                     </p>
                     <p className={styles.app_intro}>
                         <a
                             rel={node => node}
                             href="https://github.com/TonyHey"
                             target="_blank"
-                        >github</a>
+                        >resume</a>
                     </p>
                     <p className={styles.app_intro}>
                         <a
                             rel={node => node}
-                            href="https://github.com/TonyHey"
+                            href="https://www.facebook.com/Tonyheee"
                             target="_blank"
-                        >github</a>
+                        >facebook</a>
                     </p>
                 </section>
                 <canvas id="canvas_box" className={styles.canvas}>your browser not suport canvas</canvas>
