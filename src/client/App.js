@@ -70,6 +70,7 @@ class App extends Component {
                 // 用户取消分享后执行的回调函数
             }
         })
+        alert("b0cb46f737b46edb92e2d226ff61eb2e512cb47e")
     }
     render() {
         return (
