@@ -1,5 +1,6 @@
 import React, { Component } from "react"
 import logo from "../logo.svg"
+import qrcode from "./qrcode.jpg"
 import styles from "./App.scss"
 
 class App extends Component {
@@ -46,6 +47,29 @@ class App extends Component {
         document.addEventListener("click", () => i())
         i()
         /* eslint-enable */
+        const wx = window.wx
+        wx.config({
+            debug: true,
+            appId: "wx74e1a7285e3aa575", // 必填，公众号的唯一标识
+            timestamp: new Date().getTime(), // 必填，生成签名的时间戳
+            nonceStr: "gjhfgddghg545424", // 必填，生成签名的随机串
+            signature: "sM4AOVdWfPE4DxkXGEs8VDhnoIWOdTmCCEUGjfg6Xr8BRt4FasKq7Nw5u2S1nHKsvFP1m2Gif6HDl4HLLbLhug",
+            jsApiList: ["onMenuShareAppMessage"] // 必填，需要使用的JS接口列表，所有JS接口列表见附录2
+        })
+        wx.onMenuShareAppMessage({
+            title: "Sharing title test", // 分享标题
+            desc: "Sharing description test", // 分享描述
+            link: "http://freedomlove.me", // 分享链接，该链接域名或路径必须与当前页面对应的公众号JS安全域名一致
+            imgUrl: qrcode, // 分享图标
+            success() {
+                console.log("success")
+                // 用户确认分享后执行的回调函数
+            },
+            cancel() {
+                console.log("failed")
+                // 用户取消分享后执行的回调函数
+            }
+        })
     }
     render() {
         return (
