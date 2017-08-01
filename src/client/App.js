@@ -51,15 +51,15 @@ class App extends Component {
         wx.config({
             debug: true,
             appId: "wx74e1a7285e3aa575", // 必填，公众号的唯一标识
-            timestamp: new Date().getTime(), // 必填，生成签名的时间戳
+            timestamp: 1501557618, // 必填，生成签名的时间戳
             nonceStr: "gjhfgddghg545424", // 必填，生成签名的随机串
-            signature: "sM4AOVdWfPE4DxkXGEs8VDhnoIWOdTmCCEUGjfg6Xr8BRt4FasKq7Nw5u2S1nHKsvFP1m2Gif6HDl4HLLbLhug",
+            signature: "b0cb46f737b46edb92e2d226ff61eb2e512cb47e",
             jsApiList: ["onMenuShareAppMessage"] // 必填，需要使用的JS接口列表，所有JS接口列表见附录2
         })
         wx.onMenuShareAppMessage({
             title: "Sharing title test", // 分享标题
             desc: "Sharing description test", // 分享描述
-            link: "http://freedomlove.me", // 分享链接，该链接域名或路径必须与当前页面对应的公众号JS安全域名一致
+            link: "https://freedomlove.me", // 分享链接，该链接域名或路径必须与当前页面对应的公众号JS安全域名一致
             imgUrl: qrcode, // 分享图标
             success() {
                 console.log("success")
