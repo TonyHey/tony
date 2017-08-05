@@ -63,7 +63,7 @@ class App extends Component {
             wx.onMenuShareAppMessage({
                 title: "Sharing title test", // 分享标题
                 desc: "Sharing description test", // 分享描述
-                link: "https://www.freedomlove.me", // 分享链接，该链接域名或路径必须与当前页面对应的公众号JS安全域名一致
+                link: location.href, // 分享链接，该链接域名或路径必须与当前页面对应的公众号JS安全域名一致
                 imgUrl: "https://upload.freedomlove.me/upload/motor.jpg", // 分享图标
                 success() {
                     console.log("success")
