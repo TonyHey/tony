@@ -53,7 +53,7 @@ class App extends Component {
             { method: "GET" })
         .then(res => res.json()).then(data => {
             wx.config({
-                debug: true,
+                debug: false,
                 appId: "wx74e1a7285e3aa575", // 必填，公众号的唯一标识
                 timestamp: data.timestamp, // 必填，生成签名的时间戳
                 nonceStr: data.nonceStr, // 必填，生成签名的随机串
@@ -61,7 +61,6 @@ class App extends Component {
                 jsApiList: ["onMenuShareAppMessage"] // 必填，需要使用的JS接口列表，所有JS接口列表见附录2
             })
             wx.ready(() => {
-                alert("ready to share")
                 wx.onMenuShareAppMessage({
                     title: "Sharing title test", // 分享标题
                     desc: "Sharing description test", // 分享描述
