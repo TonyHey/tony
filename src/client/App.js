@@ -52,13 +52,12 @@ class App extends Component {
         Fetch("/api/signature?url=" + location.href,
             { method: "GET" })
         .then(res => res.json()).then(data => {
-            console.log(data)
             wx.config({
                 debug: true,
                 appId: "wx74e1a7285e3aa575", // 必填，公众号的唯一标识
-                timestamp: 1501557618, // 必填，生成签名的时间戳
-                nonceStr: "gjhfgddghg545424", // 必填，生成签名的随机串
-                signature: "df3cb281a60e4afbf7ec82c5e1e5ea7da56d7b23",
+                timestamp: data.timestamp, // 必填，生成签名的时间戳
+                nonceStr: data.nonceStr, // 必填，生成签名的随机串
+                signature: data.signature,
                 jsApiList: ["onMenuShareAppMessage"] // 必填，需要使用的JS接口列表，所有JS接口列表见附录2
             })
             wx.onMenuShareAppMessage({
