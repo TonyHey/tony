@@ -47,9 +47,9 @@ class App extends Component {
         }
         document.addEventListener("click", () => i())
         i()
-        alert(navigator.userAgent)
         /* eslint-enable */
-        if (/micromessenger/.test(navigator.userAgent)) {
+        const ua = navigator.userAgent.toLowerCase()
+        if (/micromessenger/.test(ua)) {
             const wx = window.wx
             const href = location.href
             Fetch("/api/signature?url=" + href,
