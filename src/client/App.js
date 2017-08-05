@@ -48,36 +48,38 @@ class App extends Component {
         document.addEventListener("click", () => i())
         i()
         /* eslint-enable */
-        const wx = window.wx
-        const href = location.href
-        Fetch("/api/signature?url=" + href,
-            { method: "GET" })
-        .then(res => res.json()).then(data => {
-            wx.config({
-                debug: false,
-                appId: "wx74e1a7285e3aa575", // 必填，公众号的唯一标识
-                timestamp: data.timestamp, // 必填，生成签名的时间戳
-                nonceStr: data.nonceStr, // 必填，生成签名的随机串
-                signature: data.signature,
-                jsApiList: ["onMenuShareAppMessage"] // 必填，需要使用的JS接口列表，所有JS接口列表见附录2
-            })
-            wx.ready(() => {
-                wx.onMenuShareAppMessage({
-                    title: "Tony's Here", // 分享标题
-                    desc: "Keep moving & Carry on", // 分享描述
-                    link: href, // 分享链接，该链接域名或路径必须与当前页面对应的公众号JS安全域名一致
-                    imgUrl: "https://upload.freedomlove.me/upload/motor.jpg", // 分享图标
-                    success() {
-                        console.log("success")
-                        // 用户确认分享后执行的回调函数
-                    },
-                    cancel() {
-                        console.log("failed")
-                        // 用户取消分享后执行的回调函数
-                    }
+        if (/micromessennger/.test(navigator.userAgent)) {
+            const wx = window.wx
+            const href = location.href
+            Fetch("/api/signature?url=" + href,
+                { method: "GET" })
+            .then(res => res.json()).then(data => {
+                wx.config({
+                    debug: false,
+                    appId: "wx74e1a7285e3aa575", // 必填，公众号的唯一标识
+                    timestamp: data.timestamp, // 必填，生成签名的时间戳
+                    nonceStr: data.nonceStr, // 必填，生成签名的随机串
+                    signature: data.signature,
+                    jsApiList: ["onMenuShareAppMessage"] // 必填，需要使用的JS接口列表，所有JS接口列表见附录2
                 })
-            })
-        }).catch(err => console.log(err))
+                wx.ready(() => {
+                    wx.onMenuShareAppMessage({
+                        title: "Tony's Here", // 分享标题
+                        desc: "Keep moving & Carry on", // 分享描述
+                        link: href, // 分享链接，该链接域名或路径必须与当前页面对应的公众号JS安全域名一致
+                        imgUrl: "https://upload.freedomlove.me/upload/motor.jpg", // 分享图标
+                        success() {
+                            console.log("success")
+                            // 用户确认分享后执行的回调函数
+                        },
+                        cancel() {
+                            console.log("failed")
+                            // 用户取消分享后执行的回调函数
+                        }
+                    })
+                })
+            }).catch(err => console.log(err))
+        }
     }
     render() {
         return (
