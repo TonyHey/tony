@@ -1,4 +1,5 @@
 import React, { Component } from "react"
+import Fetch from "isomorphic-fetch"
 import logo from "../logo.svg"
 // import qrcode from "./qrcode.jpg"
 import styles from "./App.scss"
@@ -47,29 +48,34 @@ class App extends Component {
         document.addEventListener("click", () => i())
         i()
         /* eslint-enable */
-        // const wx = window.wx
-        // wx.config({
-        //     debug: true,
-        //     appId: "wx74e1a7285e3aa575", // 必填，公众号的唯一标识
-        //     timestamp: 1501557618, // 必填，生成签名的时间戳
-        //     nonceStr: "gjhfgddghg545424", // 必填，生成签名的随机串
-        //     signature: "df3cb281a60e4afbf7ec82c5e1e5ea7da56d7b23",
-        //     jsApiList: ["onMenuShareAppMessage"] // 必填，需要使用的JS接口列表，所有JS接口列表见附录2
-        // })
-        // wx.onMenuShareAppMessage({
-        //     title: "Sharing title test", // 分享标题
-        //     desc: "Sharing description test", // 分享描述
-        //     link: "https://www.freedomlove.me", // 分享链接，该链接域名或路径必须与当前页面对应的公众号JS安全域名一致
-        //     imgUrl: qrcode, // 分享图标
-        //     success() {
-        //         console.log("success")
-        //         // 用户确认分享后执行的回调函数
-        //     },
-        //     cancel() {
-        //         console.log("failed")
-        //         // 用户取消分享后执行的回调函数
-        //     }
-        // })
+        const wx = window.wx
+        Fetch("/api/signature?url=" + location.href,
+            { method: "GET" })
+        .then(res => res.json()).then(data => {
+            console.log(data)
+            wx.config({
+                debug: true,
+                appId: "wx74e1a7285e3aa575", // 必填，公众号的唯一标识
+                timestamp: 1501557618, // 必填，生成签名的时间戳
+                nonceStr: "gjhfgddghg545424", // 必填，生成签名的随机串
+                signature: "df3cb281a60e4afbf7ec82c5e1e5ea7da56d7b23",
+                jsApiList: ["onMenuShareAppMessage"] // 必填，需要使用的JS接口列表，所有JS接口列表见附录2
+            })
+            wx.onMenuShareAppMessage({
+                title: "Sharing title test", // 分享标题
+                desc: "Sharing description test", // 分享描述
+                link: "https://www.freedomlove.me", // 分享链接，该链接域名或路径必须与当前页面对应的公众号JS安全域名一致
+                imgUrl: "https://upload.freedomlove.me/upload/motor.jpg", // 分享图标
+                success() {
+                    console.log("success")
+                    // 用户确认分享后执行的回调函数
+                },
+                cancel() {
+                    console.log("failed")
+                    // 用户取消分享后执行的回调函数
+                }
+            })
+        }).catch(err => console.log(err))
     }
     render() {
         return (
