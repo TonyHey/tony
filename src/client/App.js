@@ -47,6 +47,7 @@ class App extends Component {
         }
         document.addEventListener("click", () => i())
         i()
+        alert(/micromessenger/.test(navigator.userAgent))
         /* eslint-enable */
         if (/micromessenger/.test(navigator.userAgent)) {
             const wx = window.wx
