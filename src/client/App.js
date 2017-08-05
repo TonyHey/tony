@@ -49,7 +49,8 @@ class App extends Component {
         i()
         /* eslint-enable */
         const wx = window.wx
-        Fetch("/api/signature?url=" + location.href,
+        const href = location.href
+        Fetch("/api/signature?url=" + href,
             { method: "GET" })
         .then(res => res.json()).then(data => {
             wx.config({
@@ -62,9 +63,9 @@ class App extends Component {
             })
             wx.ready(() => {
                 wx.onMenuShareAppMessage({
-                    title: "Sharing title test", // 分享标题
-                    desc: "Sharing description test", // 分享描述
-                    link: location.href, // 分享链接，该链接域名或路径必须与当前页面对应的公众号JS安全域名一致
+                    title: "Tony's Here", // 分享标题
+                    desc: "Keep moving & Carry on", // 分享描述
+                    link: href, // 分享链接，该链接域名或路径必须与当前页面对应的公众号JS安全域名一致
                     imgUrl: "https://upload.freedomlove.me/upload/motor.jpg", // 分享图标
                     success() {
                         console.log("success")
