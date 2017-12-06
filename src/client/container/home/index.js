@@ -1,8 +1,8 @@
 import React, { Component } from "react"
 import Fetch from "isomorphic-fetch"
-import logo from "../logo.svg"
+import logo from "../../../logo.svg"
 // import qrcode from "./qrcode.jpg"
-import styles from "./App.scss"
+import styles from "./index.scss"
 
 class App extends Component {
     componentDidMount() {

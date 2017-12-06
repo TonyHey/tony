@@ -1,0 +1,15 @@
+.leftEnter {
+    transform: translateX(100%);
+    &.leftEnterActive {
+        transform: translateX(0);
+        transition: all 0.4s linear;
+    }
+}
+
+.leftLeave {
+    transform: translateX(0);
+    &.leftLeaveActive {
+        transform: translateX(-100%);
+        transition: all 0.4s linear;
+    }
+}
