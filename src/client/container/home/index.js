@@ -52,11 +52,11 @@ class App extends Component {
         if (/micromessenger/.test(ua)) {
             const wx = window.wx
             const href = location.href
-            Fetch("/api/signature?url=" + href,
+            Fetch("/api/signature?url=" + href.split("#")[0],
                 { method: "GET" })
             .then(res => res.json()).then(data => {
                 wx.config({
-                    debug: false,
+                    debug: true,
                     appId: "wx74e1a7285e3aa575", // 必填，公众号的唯一标识
                     timestamp: data.timestamp, // 必填，生成签名的时间戳
                     nonceStr: data.nonceStr, // 必填，生成签名的随机串
@@ -65,8 +65,8 @@ class App extends Component {
                 })
                 wx.ready(() => {
                     wx.onMenuShareAppMessage({
-                        title: "Tony's Here", // 分享标题
-                        desc: "Keep moving & Carry on", // 分享描述
+                        title: document.getElementsById("wx-share-title").innerHTML, // 分享标题
+                        desc: document.getElementsById("wx-share-desc").innerHTML, // 分享描述
                         link: href, // 分享链接，该链接域名或路径必须与当前页面对应的公众号JS安全域名一致
                         imgUrl: "https://upload.freedomlove.me/upload/motor.jpg", // 分享图标
                         success() {
@@ -88,8 +88,8 @@ class App extends Component {
                 <section className={styles.container}>
                     <div className={styles.app_header}>
                         <img src={logo} className={styles.app_logo} alt="logo" />
-                        <h1>{"Tony's Here"}</h1>
-                        <h2>Keep moving and carry on</h2>
+                        <h1 id="wx-share-title">{"Tony's Here"}</h1>
+                        <h2 id="wx-share-desc">Keep moving and carry on</h2>
                     </div>
                     <p className={styles.app_intro}>
                         <a
