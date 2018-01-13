@@ -47,16 +47,16 @@ class App extends Component {
         }
         document.addEventListener("click", () => i())
         i()
-        /* eslint-enable */
+
         const ua = navigator.userAgent.toLowerCase()
         if (/micromessenger/.test(ua)) {
             const wx = window.wx
             const href = location.href
-            Fetch("/api/signature?url=" + href.split("#")[0],
+            Fetch("/api/signature?url=" + encodeURIComponent(href.split("#")[0]),
                 { method: "GET" })
             .then(res => res.json()).then(data => {
                 wx.config({
-                    debug: true,
+                    debug: false,
                     appId: "wx74e1a7285e3aa575", // 必填，公众号的唯一标识
                     timestamp: data.timestamp, // 必填，生成签名的时间戳
                     nonceStr: data.nonceStr, // 必填，生成签名的随机串
@@ -81,6 +81,7 @@ class App extends Component {
                 })
             }).catch(err => console.log(err))
         }
+        /* eslint-enable */
     }
     render() {
         return (
