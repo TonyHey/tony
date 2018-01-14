@@ -1,4 +1,5 @@
 import React, { Component } from "react"
+import PropTypes from "prop-types"
 import Fetch from "isomorphic-fetch"
 import logo from "../../../logo.svg"
 // import qrcode from "./qrcode.jpg"
@@ -50,9 +51,11 @@ class App extends Component {
 
         const ua = navigator.userAgent.toLowerCase()
         if (/micromessenger/.test(ua)) {
-            const wx = window.wx
-            const href = location.href
-            Fetch("/api/signature?url=" + encodeURIComponent(href.split("#")[0]),
+            const { wx } = window
+            const { href } = location
+            const link = encodeURI(href.split("#")[0])
+            const { title, desc, imgUrl } = this.props
+            Fetch("/api/signature?url=" + link,
                 { method: "GET" })
             .then(res => res.json()).then(data => {
                 wx.config({
@@ -65,10 +68,10 @@ class App extends Component {
                 })
                 wx.ready(() => {
                     wx.onMenuShareAppMessage({
-                        title: document.getElementsById("wx-share-title").innerHTML, // 分享标题
-                        desc: document.getElementsById("wx-share-desc").innerHTML, // 分享描述
-                        link: href, // 分享链接，该链接域名或路径必须与当前页面对应的公众号JS安全域名一致
-                        imgUrl: "https://upload.freedomlove.me/upload/motor.jpg", // 分享图标
+                        title, // 分享标题
+                        desc, // 分享描述
+                        link, // 分享链接，该链接域名或路径必须与当前页面对应的公众号JS安全域名一致
+                        imgUrl, // 分享图标
                         success() {
                             console.log("success")
                             // 用户确认分享后执行的回调函数
@@ -84,38 +87,39 @@ class App extends Component {
         /* eslint-enable */
     }
     render() {
+        const { title, desc } = this.props
         return (
             <div className={styles.app}>
                 <section className={styles.container}>
                     <div className={styles.app_header}>
                         <img src={logo} className={styles.app_logo} alt="logo" />
-                        <h1 id="wx-share-title">{"Tony's Here"}</h1>
-                        <h2 id="wx-share-desc">Keep moving and carry on</h2>
+                        <h1 id="wx-share-title">{title}</h1>
+                        <h2 id="wx-share-desc">{desc}</h2>
                     </div>
                     <p className={styles.app_intro}>
                         <a
-                            rel={node => node}
+                            rel="noopener noreferrer"
                             href="https://github.com/TonyHey"
                             target="_blank"
                         >github</a>
                     </p>
                     <p className={styles.app_intro}>
                         <a
-                            rel={node => node}
+                            rel="noopener noreferrer"
                             href="http://project.freedomlove.me"
                             target="_blank"
                         >project</a>
                     </p>
                     <p className={styles.app_intro}>
                         <a
-                            rel={node => node}
+                            rel="noopener noreferrer"
                             href="https://github.com/TonyHey"
                             target="_blank"
                         >resume</a>
                     </p>
                     <p className={styles.app_intro}>
                         <a
-                            rel={node => node}
+                            rel="noopener noreferrer"
                             href="https://www.facebook.com/Tonyheee"
                             target="_blank"
                         >facebook</a>
@@ -127,4 +131,14 @@ class App extends Component {
     }
 }
 
+App.defaultProps = {
+    title: "Tony's Here",
+    desc: "Keep moving and carry on",
+    imgUrl: "https://upload.freedomlove.me/upload/motor.jpg",
+}
+App.propTypes = {
+    title: PropTypes.string,
+    desc: PropTypes.string,
+    imgUrl: PropTypes.string,
+}
 export default App
