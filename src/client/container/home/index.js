@@ -86,6 +86,7 @@ class App extends Component {
         }
         /* eslint-enable */
     }
+
     render() {
         const { title, desc } = this.props
         return (
@@ -113,7 +114,7 @@ class App extends Component {
                     <p className={styles.app_intro}>
                         <a
                             rel="noopener noreferrer"
-                            href="https://github.com/TonyHey"
+                            href="https://tonyhey.github.io/tony-cv"
                             target="_blank"
                         >resume</a>
                     </p>
