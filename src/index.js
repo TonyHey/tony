@@ -13,5 +13,7 @@ ga('create', 'UA-104693538-1', 'auto');
 ga('send', 'pageview');
  /* eslint-enable */
 
+// document.getElementById("copyright").innerHTML =
+// `蜀ICP备17024412号-1 ©${new Date().getFullYear()} Tony`
 ReactDOM.render(<App />, document.getElementById("root"))
 // registerServiceWorker()

@@ -3,11 +3,11 @@ import PropTypes from "prop-types"
 import Fetch from "isomorphic-fetch"
 import logo from "../../../logo.svg"
 // import qrcode from "./qrcode.jpg"
-import styles from "./index.scss"
+import styles from "./index.module.less"
 
 class App extends Component {
-    componentDidMount() {
-        /* eslint-disable */
+  componentDidMount() {
+    /* eslint-disable */
         let c = document.getElementsByTagName("canvas")[0],
             x = c.getContext("2d"),
             pr = window.devicePixelRatio || 1,
@@ -85,61 +85,69 @@ class App extends Component {
             }).catch(err => console.log(err))
         }
         /* eslint-enable */
-    }
+  }
 
-    render() {
-        const { title, desc } = this.props
-        return (
-            <div className={styles.app}>
-                <section className={styles.container}>
-                    <div className={styles.app_header}>
-                        <img src={logo} className={styles.app_logo} alt="logo" />
-                        <h1 id="wx-share-title">{title}</h1>
-                        <h2 id="wx-share-desc">{desc}</h2>
-                    </div>
-                    <p className={styles.app_intro}>
-                        <a
-                            rel="noopener noreferrer"
-                            href="https://github.com/TonyHey"
-                            target="_blank"
-                        >github</a>
-                    </p>
-                    <p className={styles.app_intro}>
-                        <a
-                            rel="noopener noreferrer"
-                            href="http://project.freedomlove.me"
-                            target="_blank"
-                        >project</a>
-                    </p>
-                    <p className={styles.app_intro}>
-                        <a
-                            rel="noopener noreferrer"
-                            href="https://tonyhey.github.io/tony-cv"
-                            target="_blank"
-                        >resume</a>
-                    </p>
-                    <p className={styles.app_intro}>
-                        <a
-                            rel="noopener noreferrer"
-                            href="https://www.facebook.com/Tonyheee"
-                            target="_blank"
-                        >facebook</a>
-                    </p>
-                </section>
-                <canvas id="canvas_box" className={styles.canvas}>your browser not suport canvas</canvas>
-            </div>
-        )
-    }
+  render() {
+    const { title, desc } = this.props
+    return (
+      <div className={styles.app}>
+        <section className={styles.container}>
+          <div className={styles.app_header}>
+            <img src={logo} className={styles.app_logo} alt="logo" />
+            <h1 id="wx-share-title">{title}</h1>
+            <h2 id="wx-share-desc">{desc}</h2>
+          </div>
+          <p className={styles.app_intro}>
+            <a
+              rel="noopener noreferrer"
+              href="https://github.com/TonyHey"
+              target="_blank"
+            >
+              github
+            </a>
+          </p>
+          <p className={styles.app_intro}>
+            <a
+              rel="noopener noreferrer"
+              href="http://project.freedomlove.me"
+              target="_blank"
+            >
+              project
+            </a>
+          </p>
+          <p className={styles.app_intro}>
+            <a
+              rel="noopener noreferrer"
+              href="https://tonyhey.github.io/tony-cv"
+              target="_blank"
+            >
+              resume
+            </a>
+          </p>
+          <p className={styles.app_intro}>
+            <a
+              rel="noopener noreferrer"
+              href="https://www.facebook.com/Tonyheee"
+              target="_blank"
+            >
+              facebook
+            </a>
+          </p>
+        </section>
+        <canvas id="canvas_box" className={styles.canvas}>your browser not suport canvas</canvas>
+      </div>
+    )
+  }
 }
 
 App.defaultProps = {
-    title: "Tony's Here",
-    desc: "Keep moving and carry on",
-    imgUrl: "https://upload.freedomlove.me/upload/motor.jpg",
+  title: "Tony's Here",
+  desc: "Keep moving and carry on",
+  imgUrl: "https://cdn.freedomlove.me/upload/motor.jpg",
 }
 App.propTypes = {
-    title: PropTypes.string,
-    desc: PropTypes.string,
-    imgUrl: PropTypes.string,
+  title: PropTypes.string,
+  desc: PropTypes.string,
+  imgUrl: PropTypes.string,
 }
 export default App

@@ -2,9 +2,8 @@ import React from "react"
 import { BrowserRouter, Switch, Route } from "react-router-dom"
 // import { CSSTransitionGroup } from "react-transition-group"
 // import Bundle from "./bundle"
-// import styles from "./router.scss"
+// import styles from "./router.less"
 import App from "../container/home"
-import Test from "../container/test"
 
 
 // const App = props => (
@@ -17,13 +16,13 @@ import Test from "../container/test"
 //         {Component => <Component {...props} />}
 //     </Bundle>
 // )
+const { location } = window
 const routes = () => (
-    <BrowserRouter>
-        <Switch>
-            <Route location={location} key={`${location.key}_0`} path="/test" component={Test} />
-            <Route location={location} key={`${location.key}_1`} path="/" component={App} />
-        </Switch>
-    </BrowserRouter>
+  <BrowserRouter>
+    <Switch>
+      <Route location={location} key={`${location.key}_1`} path="/" component={App} />
+    </Switch>
+  </BrowserRouter>
 )
 
 export default routes

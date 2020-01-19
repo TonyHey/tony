@@ -23,156 +23,37 @@
         "__dirname": true,
         "it": true
     },
-    // 0=off 1=warn 2=error
     "rules": {
-        //
-        /**
-         * This rule enforces consistent use of trailing commas in object and array literals.
-         * @see http://eslint.org/docs/rules/comma-dangle
-         * disallow trailing commas to last item
-         */
         "comma-dangle": 0,
-
-        /**
-         * This rule takes one option, an object, with a boolean property ertyModificationsFor
-         * @see http://eslint.org/docs/rules/no-param-reassign
-         * allow to update function props
-         */
         "no-param-reassign": [
             "error", {
                 "props": false
             }
         ],
-        /**
-         * This rule enforces consistent line endings independent of operating system, VCS, or editor used across your codebase.
-         * @see http://eslint.org/docs/rules/linebreak-style
-         */
         "linebreak-style": 0,
-        /**
-         * This rule can enforce or disallow the use of named function expressions.
-         * @see http://eslint.org/docs/rules/func-names
-         */
         "func-names": 0,
-
-        /**
-         * This rule is aimed to flag usage of + operators with strings.
-         * @see http://eslint.org/docs/rules/prefer-template
-         */
         "prefer-template": 0,
-
-        /**
-         * Enforces return statements in callbacks of array’s methods
-         * @see http://eslint.org/docs/rules/array-callback-return
-         */
         "array-callback-return": 0,
-
-        /**
-         * This rule enforces a consistent indentation style. The default style is 4 spaces.
-         * @see http://eslint.org/docs/rules/indent
-         */
-        "indent": [2, 4],
-
-        /**
-         * This rule enforces the consistent use of either backticks, double, or single quotes.
-         * @see http://eslint.org/docs/rules/quotes
-         */
+        "indent": [2, 2],
         "quotes": [2, "double"],
-
-        /**
-         * This rule enforces consistent use of semicolons.
-         * @see http://eslint.org/docs/rules/semi
-         * disallows semicolons as the end of statements (except to disambiguate statements beginning with [, (, /, +, or -)
-         */
         "semi": ["error", "never"],
-
-        /**
-         * This rule enforces parentheses around arrow function parameters regardless of arity.
-         * @see http://eslint.org/docs/rules/arrow-parens
-         * require parentheses around arrow function arguments
-         */
         "arrow-parens": [2, "as-needed"],
-
-        // allow the use of console in production env
-        /**
-         * This rule disallows calls to methods of the console object.
-         * @see http://eslint.org/docs/rules/no-console
-         * allow the use of console in production env
-         */
-        // "no-console": 0,
-
-        /**
-         * This rule requires all calls to require() to be at the top level of the module, similar to ES6 import and export statements, which also can occur only at the top level.
-         * @see http://eslint.org/docs/rules/global-require
-         * require all requires be top-level
-         */
+        "no-console": 1,
         "global-require": 0,
-
-        /**
-         * This rule aims to enforce consistent spacing before function parentheses and as such, will warn whenever whitespace doesn’t match the preferences specified.
-         * @see http://eslint.org/docs/rules/space-before-function-paren
-         * require or disallow space before function opening parenthesis
-         */
         "space-before-function-paren": ["error", {
             "anonymous": "never",
             "named": "never",
             "asyncArrow": "always"
         }],
-
-        /**
-         * This rule is aimed to enforce consistent indentation style. The default style is 4 spaces.
-         * @see https://github.com/yannickcr/eslint-plugin-react/blob/master/docs/rules/jsx-indent.md
-         */
-        "react/jsx-indent": [2, 4],
-
-        /**
-         *
-         * @see https://github.com/yannickcr/eslint-plugin-react/blob/master/docs/rules/jsx-filename-extension.md
-         * only .jsx files may have JSX
-         */
+        "react/jsx-indent": [2, 2],
         "react/jsx-filename-extension": [1, {
             "extensions": [".js", ".jsx"]
         }],
-
-        //
-        /**
-         *
-         * @see https://github.com/benmosher/eslint-plugin-import/blob/master/docs/rules/no-extraneous-dependencies.md
-         * It is okay to import devDependencies in tests.
-         */
         "import/no-extraneous-dependencies": 1,
-
-        /**
-         *
-         * @see https://github.com/yannickcr/eslint-plugin-react/blob/master/docs/rules/jsx-indent-props.md
-         * Validate props indentation in JSX, also 4 spaces
-         */
         "react/jsx-indent-props": ["error", 4],
-
-        /**
-         * @see https://github.com/benmosher/eslint-plugin-import/blob/master/docs/rules/no-dynamic-require.md
-         * allows require() calls with expressions
-         */
         "import/no-dynamic-require": 0,
-
-        /**
-         *
-         * @see https://github.com/yannickcr/eslint-plugin-react/blob/master/docs/rules/no-array-index-key.md
-         * Prevent usage of Array index in keys
-         */
         "react/no-array-index-key": 0,
-
-        /**
-         *
-         * @see https://github.com/evcohen/eslint-plugin-jsx-a11y/blob/master/docs/rules/no-static-element-interactions.md
-         * try to add role, but still warm, so off this rule
-         */
         "jsx-a11y/no-static-element-interactions": 0,
-
-        /**
-         * Prevent missing props validation in a React component definition (prop-types)
-         * @see https://github.com/yannickcr/eslint-plugin-react/blob/master/docs/rules/prop-types.md
-         *
-         */
         "react/prop-types": 1,
         "jsx-a11y/no-noninteractive-element-interactions": 0
     }
